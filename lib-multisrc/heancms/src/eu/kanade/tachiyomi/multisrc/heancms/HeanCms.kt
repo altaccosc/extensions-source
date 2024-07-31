@@ -76,7 +76,7 @@ abstract class HeanCms(
 
     protected open val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ", Locale.US)
 
-    override fun headersBuilder(): Headers.Builder = Headers.Builder()
+    override fun headersBuilder() = super.headersBuilder()
         .add("Origin", baseUrl)
         .add("Referer", "$baseUrl/")
 
@@ -225,13 +225,13 @@ abstract class HeanCms(
             throw Exception(intl.format("url_changed_error", name, name))
         }
 
-        val seriesId = manga.url.substringAfterLast("#")
+        val seriesSlug = manga.url.substringAfterLast("/").substringBefore("#")
 
         val apiHeaders = headersBuilder()
             .add("Accept", ACCEPT_JSON)
             .build()
 
-        return GET("$apiUrl/series/id/$seriesId", apiHeaders)
+        return GET("$apiUrl/series/$seriesSlug", apiHeaders)
     }
 
     override fun mangaDetailsParse(response: Response): SManga {

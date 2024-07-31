@@ -1,7 +1,9 @@
 ext {
     extName = 'Vortex Scans'
     extClass = '.VortexScans'
-    extVersionCode = 31
+    themePkg = 'iken'
+    overrideVersionCode = 33
+    isNsfw = false
 }
 
 apply from: "$rootDir/common.gradle"

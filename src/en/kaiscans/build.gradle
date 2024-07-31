@@ -3,7 +3,8 @@ ext {
     extClass = '.KaiScans'
     themePkg = 'mangathemesia'
     baseUrl = 'https://kaiscans.org'
-    overrideVersionCode = 1
+    overrideVersionCode = 4
+    isNsfw = true
 }
 
 apply from: "$rootDir/common.gradle"
